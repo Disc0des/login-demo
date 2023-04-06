@@ -1,16 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import {
+  StyledContainer,
+  StyledH2,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+  StyledP,
+} from "./StyledComponents";
 
 const ResetPassword = () => {
   return (
-    <div>
-      <h2>Reset Password</h2>
-      <form>
+    <StyledContainer>
+      <StyledH2>Reset Password</StyledH2>
+      <StyledForm>
         <label htmlFor="email">Email</label>
-        <input name="email" />
-        <button>Submit</button>
-      </form>
-      <p>Know your details? <a href="/login">Log in</a></p>
-    </div>
+        <StyledInput name="email" />
+        <StyledButton>Submit</StyledButton>
+      </StyledForm>
+      <StyledP>
+        Know your details? <Link to="/login">Log in</Link>
+      </StyledP>
+    </StyledContainer>
   );
 };
 

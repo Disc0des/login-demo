@@ -1,31 +1,39 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import {
+  StyledContainer,
+  StyledH2,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+  StyledP,
+} from "./StyledComponents";
 
 const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
-  
+
   const handleOnClick = () => {
     setIsLoggedIn(true);
     navigate("/");
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form>
+    <StyledContainer>
+      <StyledH2>Login</StyledH2>
+      <StyledForm>
         <label htmlFor="username">Username</label>
-        <input name="username" />
+        <StyledInput name="username" />
         <label htmlFor="password">Password</label>
-        <input name="password" />
-        <button onClick={handleOnClick}>Submit</button>
-      </form>
-      <p>
-        Not a member? <a href="/sign-up">Sign Up</a> here
-      </p>
-      <p>
-        Forgot password? <a href="/reset-password">Reset here</a>
-      </p>
-    </div>
+        <StyledInput name="password" />
+        <StyledButton onClick={handleOnClick}>Submit</StyledButton>
+      </StyledForm>
+      <StyledP>
+        Not a member? <Link to="/sign-up">Sign Up</Link> here
+      </StyledP>
+      <StyledP>
+        Forgot password? <Link to="/reset-password">Reset here</Link>
+      </StyledP>
+    </StyledContainer>
   );
 };
 

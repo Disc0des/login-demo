@@ -1,20 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import {
+  StyledContainer,
+  StyledH2,
+  StyledForm,
+  StyledInput,
+  StyledButton,
+  StyledP,
+} from "./StyledComponents";
 
 const SignUp = () => {
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form>
+    <StyledContainer>
+      <StyledH2>Sign Up</StyledH2>
+      <StyledForm>
         <label htmlFor="name">Name</label>
-        <input name="name" />
+        <StyledInput name="name" />
         <label htmlFor="surname">Surname</label>
-        <input name="surname" />
+        <StyledInput name="surname" />
         <label htmlFor="email">Email</label>
-        <input name="email" />
-        <button>Submit</button>
-      </form>
-      <p>Already a member? <a href="/login">Log in</a></p>
-    </div>
+        <StyledInput name="email" />
+        <StyledButton>Submit</StyledButton>
+      </StyledForm>
+      <StyledP>
+        Already a member? <Link to="/login">Log in</Link>
+      </StyledP>
+    </StyledContainer>
   );
 };
 
