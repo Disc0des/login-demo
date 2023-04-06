@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  
   return (
     <div>
       <h2>Sign Up</h2>
@@ -13,7 +15,9 @@ const SignUp = () => {
         <input name="email" />
         <button>Submit</button>
       </form>
-      <p>Already a member? <a href="/login">Log in</a></p>
+      <p>
+        Already a member? <Link to="/login">Log in</Link>
+      </p>
     </div>
   );
 };

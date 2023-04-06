@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
@@ -20,10 +20,10 @@ const Login = ({ setIsLoggedIn }) => {
         <button onClick={handleOnClick}>Submit</button>
       </form>
       <p>
-        Not a member? <a href="/sign-up">Sign Up</a> here
+        Not a member? <Link to="/sign-up">Sign Up</Link> here
       </p>
       <p>
-        Forgot password? <a href="/reset-password">Reset here</a>
+        Forgot password? <Link to="/reset-password">Reset here</Link>
       </p>
     </div>
   );

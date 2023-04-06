@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ResetPassword = () => {
+  
   return (
     <div>
       <h2>Reset Password</h2>
@@ -9,7 +11,9 @@ const ResetPassword = () => {
         <input name="email" />
         <button>Submit</button>
       </form>
-      <p>Know your details? <a href="/login">Log in</a></p>
+      <p>
+        Know your details? <Link to="/login">Log in</Link>
+      </p>
     </div>
   );
 };
