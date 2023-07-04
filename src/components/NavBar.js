@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import LightDarkToggle from "./LightDarkToggle";
+import Context from "../utils/Context";
 
 const NavBar = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
+  const { mode } = useContext(Context);
 
   const handleOnClick = () => {
     setIsLoggedIn(false);
@@ -18,7 +20,7 @@ const NavBar = ({ setIsLoggedIn }) => {
   ];
 
   return (
-    <div className="navbar">
+    <div className={`navbar ${mode}`}>
       <LightDarkToggle />
       <ul clasName="nav-container">
         {links.map((link) => {

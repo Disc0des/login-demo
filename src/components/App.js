@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Signup from "./Signup";
 import "../styles/Global.css";
-
-//* Component Imports
 import Login from "./Login";
-import NavBar from "./NavBar";
-import SignUp from "./SignUp";
+import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
-import ResetPassword from "./ResetPassword";
+import Context from "../utils/Context"
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [mode, setMode] = useState("light-mode");
+
+  const value = {setMode, mode}
   return (
-    <div className="app">
+    <div className={`app ${mode}`}>
       <Router>
-        <NavBar />
-          <Routes>
-            <Route exact path="/" element={<Dashboard />} />
-            <Route path="sign-up" element={<SignUp />} />
-            <Route path="reset-password" element={<ResetPassword />} />
-            <Route path="login" element={<Login />} />
-          </Routes>
+        <Context.Provider value={value}>
+        {isLoggedIn && (
+          <Navbar setIsLoggedIn={setIsLoggedIn} />
+        )}
+        <Routes>
+          <Route exact path="/" element={<Dashboard />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          />
+        </Routes>
+        </Context.Provider>
       </Router>
     </div>
   );
