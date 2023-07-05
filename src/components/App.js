@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Signup from "./Signup";
+import SignUp from "./SignUp";
 import "../styles/Global.css";
 import Login from "./Login";
 import Navbar from "./Navbar";
@@ -21,7 +21,7 @@ const App = () => {
         )}
         <Routes>
           <Route exact path="/" element={<Dashboard />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/login"
             element={<Login setIsLoggedIn={setIsLoggedIn} />}
