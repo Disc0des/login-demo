@@ -1,22 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import Context from "../utils/Context";
-import axios from "axios";
 
 const Dashboard = () => {
-  const { mode } = useContext(Context);
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_HOST}/users`)
-      .then((response) => {
-        setUsers(response.data)
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const { mode, users } = useContext(Context);
   
   return (
     <div className="page">

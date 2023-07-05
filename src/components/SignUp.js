@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Context from "../utils/Context";
 
 const SignUp = () => {
   const [newUser, setNewUser] = useState({
@@ -9,21 +10,16 @@ const SignUp = () => {
     email: "",
   });
 
+  const { users } = useContext(Context);
+
   const handleChange = (event) => {
     setNewUser({ ...newUser, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(`${process.env.REACT_APP_API_HOST}/users`, newUser)
-      .then((response) => {
-        console.log(response);
-        alert(response.data);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    e.preventDefault()
+    users.push(newUser);
+    alert("New User added")
   };
 
   return (
@@ -61,7 +57,9 @@ const SignUp = () => {
         />
         <button className="button">Submit</button>
       </form>
-      <p className="p">Already a member ? <Link to="/login">Log in</Link></p>
+      <p className="p">
+        Already a member ? <Link to="/login">Log in</Link>
+      </p>
     </div>
   );
 };

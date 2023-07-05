@@ -6,12 +6,15 @@ import Login from "./Login";
 import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
 import Context from "../utils/Context"
+import { data } from "../utils/data";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [mode, setMode] = useState("light-mode");
+  const [users, setUsers] = useState(data)
 
-  const value = {setMode, mode}
+  const value = {setMode, mode, users, setUsers}
+  
   return (
     <div className={`app ${mode}`}>
       <Router>

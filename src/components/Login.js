@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { validateUser } from "../utils/validateLogin";
 
 const Login = ({ setIsLoggedIn }) => {
   const [user, setUser] = useState({
@@ -15,16 +15,14 @@ const Login = ({ setIsLoggedIn }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`${process.env.REACT_APP_API_HOST}/login`, user)
-      .then((response) => {
-        alert(response.data.message);
-        setIsLoggedIn(response.data.loggedIn);
-        navigate("/")
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (validateUser(user)) {
+      alert("Logged in");
+      setIsLoggedIn(true);
+      navigate("/")
+    } else {
+      alert("Invalid username or password");
+      setIsLoggedIn(false);
+    }
   };
 
   return (
@@ -45,7 +43,6 @@ const Login = ({ setIsLoggedIn }) => {
         </label>
         <input
           type="password"
-          required={true}
           className="input"
           value={user.password}
           name="password"
@@ -55,7 +52,9 @@ const Login = ({ setIsLoggedIn }) => {
           Log In
         </button>
       </form>
-      <p className="p">Not a member ? <Link to="/signup">Sign up!</Link></p>
+      <p className="p">
+        Not a member ? <Link to="/signup">Sign up!</Link>
+      </p>
     </div>
   );
 };
